@@ -20,11 +20,10 @@ namespace :neo4j do
     %x{ sed -i -e 's/7473/7573/g' #{neo4j_test_root}/conf/neo4j-server.properties }
 
     puts 'Adding the Neo4j server directories to your .gitignore file'
-    %x{ grep '#{neo4j_dev_root}' .gitignore }
-    %x{ echo "#{neo4j_dev_root}" >> .gitignore } if $?.exitstatus == 1
-
-    %x{ grep '#{neo4j_test_root}' .gitignore }
-    %x{ echo "#{neo4j_test_root}" >> .gitignore } if $?.exitstatus == 1
+    [neo4j_dev_root, neo4j_test_root, tarball].each do |ignorefile|
+      %x{ grep '#{ignorefile}' .gitignore }
+      %x{ echo "#{ignorefile}" >> .gitignore } if $?.exitstatus == 1
+    end
   end
 
   %w(start stop restart status info install remove).each do |cmd|
