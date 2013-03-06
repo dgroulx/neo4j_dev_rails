@@ -15,3 +15,8 @@ spec/reports
 test/tmp
 test/version_tmp
 tmp
+testproj
+neo4j-community-1.8.2-unix.tar.gz
+neo4j-community-1.8.2
+neo4j-dev
+neo4j-test
