@@ -1,6 +1,6 @@
 # Neo4jDevRails
 
-Easy installation of a local neo4j development and test server with a Rails development environment. Also provides some test helpers
+Easy installation of a local Neo4j development and test server with a Rails development environment. Also provides some test helpers
 
 ## Installation
 
