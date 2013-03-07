@@ -6,15 +6,11 @@ Easy installation of a local neo4j development and test server with a Rails deve
 
 Add this line to your application's Gemfile:
 
-    gem 'neo4j_dev_rails'
+    gem 'neo4j_dev_rails', git: 'git@github.com:dgroulx/neo4j_dev_rails.git'
 
 And then execute:
 
     $ bundle
-
-Or install it yourself as:
-
-    $ gem install neo4j_dev_rails
 
 ## Installing Neo4j
 
