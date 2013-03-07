@@ -24,6 +24,8 @@ namespace :neo4j do
       %x{ grep '#{ignorefile}' .gitignore }
       %x{ echo "#{ignorefile}" >> .gitignore } if $?.exitstatus == 1
     end
+
+    %x{ rm -rf #{basename} }
   end
 
   %w(start stop restart status info install remove).each do |cmd|
