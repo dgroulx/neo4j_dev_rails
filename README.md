@@ -1,6 +1,6 @@
 # Neo4jDevRails
 
-TODO: Write a gem description
+Easy installation of a local neo4j development and test server with a Rails development environment. Also provides some test helpers
 
 ## Installation
 
@@ -16,9 +16,29 @@ Or install it yourself as:
 
     $ gem install neo4j_dev_rails
 
-## Usage
+## Installing Neo4j
 
-TODO: Write usage instructions here
+To download the Neo4j server, run:
+
+	$ rake neo4j:install
+	
+This will create two directories, neo4j-dev, and neo4j-test, and leave the downloaded tarball behind. Future installs will first try and use this file if available.
+
+## Running the Neo4j Server
+
+This gem provides access to all of the neo4j executables commands via rake. To start the development database, simply run 
+	
+	$ rake neo4j:dev:start
+	
+This will start up a neo4j instance listening on port 7474. The test database will run on port 7574.
+
+## Testing with Neo4j
+
+To clear out the test database after each test run, include the 'neo4j_dev_rails' file in the appropriate test helper, then call
+
+	Neo4jDevRails::clean_neo4j
+
+From your test setup or teardown method. Be careful, as this will completely clear any Neo4j database on port 7574.
 
 ## Contributing
 
