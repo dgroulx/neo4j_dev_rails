@@ -18,7 +18,7 @@ To download the Neo4j server, run:
 
 	$ rake neo4j:install
 	
-This will create two directories, neo4j-dev, and neo4j-test, and leave the downloaded tarball behind. Future installs will first try and use this file if available.
+This will create two directories, neo4j_dev, and neo4j_test, and leave the downloaded tarball behind. Future installs will first try and use this file if available.
 
 ## Running the Neo4j Server
 
