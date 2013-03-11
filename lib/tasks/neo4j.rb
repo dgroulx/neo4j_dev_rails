@@ -1,5 +1,5 @@
-neo4j_dev_root = 'neo4j-dev'
-neo4j_test_root= 'neo4j-test'
+neo4j_dev_root = 'neo4j_dev'
+neo4j_test_root= 'neo4j_test'
 
 namespace :neo4j do
   desc 'Download and install a neo4j server'
