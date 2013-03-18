@@ -6,7 +6,14 @@ module Neo4jDevRails
 
   def self.clean_neo4j
     response = RestClient.post "#{test_host}:#{test_port.to_s}/db/data/cypher", { query: 'START n0=node(0),nx=node(*) MATCH n0-[r0?]-(),nx-[rx?]-() WHERE nx <> n0 DELETE r0,rx,nx' }.to_json, accept: :json, content_type: :json
-    response.code == 200
+    return false unless response.code == 200
+
+    # Clean out node indicies
+    response = RestClient.get "#{test_host}:#{test_port.to_s}/db/data/index/node/", accept: :json
+    JSON.parse(response.body).each do |index|
+      debugger
+      RestClient.delete "#{test_host}:#{test_port.to_s}/db/data/index/node/#{index}", accept: :json
+    end
   end
 
   class << self
