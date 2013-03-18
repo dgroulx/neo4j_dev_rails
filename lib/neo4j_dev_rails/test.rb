@@ -17,9 +17,11 @@ module Neo4jDevRails
       # Clean out node indicies
       req = Net::HTTP::Get.new '/db/data/index/node', {'Accept' => 'application/json'}
       res = http.request(req)
-      JSON.parse(res.body).each do |index|
-        req = Net::HTTP::Delete.new "/db/data/index/node/#{index.first}", {'Application' => 'application/json'}
-        res = http.request(req)
+      if res.code == "200"
+        JSON.parse(res.body).each do |index|
+          req = Net::HTTP::Delete.new "/db/data/index/node/#{index.first}", {'Application' => 'application/json'}
+          res = http.request(req)
+        end
       end
     end
 
