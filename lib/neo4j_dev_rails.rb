@@ -11,8 +11,7 @@ module Neo4jDevRails
     # Clean out node indicies
     response = RestClient.get "#{test_host}:#{test_port.to_s}/db/data/index/node/", accept: :json
     JSON.parse(response.body).each do |index|
-      debugger
-      RestClient.delete "#{test_host}:#{test_port.to_s}/db/data/index/node/#{index}", accept: :json
+      RestClient.delete "#{test_host}:#{test_port.to_s}/db/data/index/node/#{index.first}", accept: :json
     end
   end
 
