@@ -2,6 +2,7 @@ neo4j_dev_root = 'neo4j_dev'
 neo4j_test_root= 'neo4j_test'
 
 namespace :neo4j do
+
   desc 'Download and install a neo4j server'
   task :install do
     basename = 'neo4j-community-1.8.2'
@@ -28,6 +29,7 @@ namespace :neo4j do
     %x{ rm -rf #{basename} }
   end
 
+
   %w(start stop restart status info install remove).each do |cmd|
     namespace :dev do
       desc "#{cmd.capitalize} the neo4j development server"
@@ -41,6 +43,23 @@ namespace :neo4j do
       task cmd do
         puts %x{#{neo4j_test_root}/bin/neo4j #{cmd}}
       end
+    end
+  end
+
+
+  namespace :dev do
+    desc "Clear out the Neo4j Development Database"
+    task :drop do
+      Neo4jDevRails::Test.configure { |c| c.port = 7474 }
+      Neo4jDevRails::Test.clean_db
+    end
+  end
+
+
+  namespace :test do
+    desc "Clear out the Neo4j Test Database"
+    task :drop do
+      Neo4jDevRails::Test.clean_db
     end
   end
 

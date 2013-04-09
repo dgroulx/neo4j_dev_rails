@@ -26,7 +26,7 @@ This gem provides access to all of the neo4j executables commands via rake. To s
 	
 	$ rake neo4j:dev:start
 	
-This will start up a neo4j instance listening on port 7474. The test database will run on port 7574.
+This will start up a neo4j instance listening on port 7474. The test database will run on port 7574 by default.
 
 ## Testing with Neo4j
 
