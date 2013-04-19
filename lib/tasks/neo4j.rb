@@ -23,7 +23,7 @@ namespace :neo4j do
     puts 'Adding the Neo4j server directories to your .gitignore file'
     [neo4j_dev_root, neo4j_test_root, tarball].each do |ignorefile|
       %x{ grep '#{ignorefile}' .gitignore }
-      %x{ echo "#{ignorefile}" >> .gitignore } if $?.exitstatus == 1
+      %x{ echo "\n#{ignorefile}" >> .gitignore } if $?.exitstatus == 1
     end
 
     %x{ rm -rf #{basename} }
