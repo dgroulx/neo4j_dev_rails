@@ -32,7 +32,7 @@ This will start up a neo4j instance listening on port 7474. The test database wi
 
 To clear out the test database after each test run, include the 'neo4j_dev_rails' file in the appropriate test helper, then call
 
-	Neo4jDevRails.clean_neo4j
+	Neo4jDevRails::Test.clean_db
 
 By default, this will clean the database running at http://localhost:7574. Both the host and port may be changed. For example, if you need to clean the database at http://myapp.dev:3600, be sure to run this code before any calls to Neo4jDevRails.clean_neo4j
 
