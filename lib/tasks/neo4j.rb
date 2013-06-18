@@ -32,14 +32,12 @@ namespace :neo4j do
 
   %w(start stop restart status info install remove).each do |cmd|
     namespace :dev do
-      desc "#{cmd.capitalize} the neo4j development server"
       task cmd do
         puts %x{#{neo4j_dev_root}/bin/neo4j #{cmd}}
       end
     end
 
     namespace :test do
-      desc "#{cmd.capitalize} the neo4j test server"
       task cmd do
         puts %x{#{neo4j_test_root}/bin/neo4j #{cmd}}
       end
